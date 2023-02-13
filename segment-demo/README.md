@@ -29,7 +29,7 @@ to setup a NodeJS source. The source will provide a write key that must be provi
     - Set Codes section to "No Code"
     - In Program Settings
         - set Webhook for eligible verification to http://<your_server_address>/api/success-webhook
-        - add userId as a required Metadata Tracking field
+        - add userId as a required Metadata Tracking field. See [this page](https://sheerid.zendesk.com/hc/en-us/articles/6935464622107) for more information about tracking custom metadata.
     - Copy access token from Settings > Access Tokens page
 - Copy the `.env.example` file to a new `.env` file.
 - Edit the contents of the `.env` file to provide relevant configurations for the application, e.g.:
