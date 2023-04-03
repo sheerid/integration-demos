@@ -10,18 +10,6 @@ The integration is receiving a webhook from SheerID verification and using the [
 
 ## Deploying the webhook handler to AWS Lambda
 
-In webhook folder, copy .env.example to .env and fill in the values.
-
-```sh
-SHEERID_ACCESS_TOKEN=Access Token from SheerID dashboard (settings -> access tokens)
-TALON_ONE_API_KEY=API Key from Talon One dashboard (campaign -> tools -> developer settings)
-TALON_ONE_BASEPATH=your talon one url, for example https://sheerid.us-east4.talon.one
-```
-
-> **_NOTE:_** If you don't have access to SheerID Access Tokens tab, modify your user in Settings -> Team and add "API Access" to your user, log out and log back in.
-
-### Deploying to AWS Lambda
-
 Make sure you have Node, [serverless](https://www.npmjs.com/package/serverless), [pnpm](https://pnpm.io/) (or npm) and configured AWS credentials with permissions to create AWS lambda functions.
 If you don't have sls, install it with:
 
@@ -38,6 +26,18 @@ $ pnpm run deploy
 ```
 
 Make note the endpoint url, you will need it later.
+
+### Environment variables for the webhook handler
+
+In `webhook/` folder, use .env.example not to create an .env file but to set environment variables for the created AWS lambda function.
+
+```sh
+SHEERID_ACCESS_TOKEN=Access Token from SheerID dashboard (settings -> access tokens)
+TALON_ONE_API_KEY=API Key from Talon One dashboard (campaign -> tools -> developer settings)
+TALON_ONE_BASEPATH=your talon one url, for example https://sheerid.us-east4.talon.one
+```
+
+> **_NOTE:_** If you don't have access to SheerID Access Tokens tab, modify your user in Settings -> Team and add "API Access" to your user, log out and log back in.
 
 ## Configuring SheerID system
 
