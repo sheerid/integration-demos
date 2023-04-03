@@ -57,11 +57,11 @@ After saving the program, go to settings, add a webhook for successful verificat
 In the main repository folder, edit the .env file and fill in the values.
 
 ```sh
-SHEERID_ACCESS_TOKEN=***REMOVED***
+SHEERID_ACCESS_TOKEN=your-access-token-from-sheerid-dashboard
 SHEERID_API_URL=https://services.sheerid.com/rest/v2/
-TALON_ONE_ADMIN_EMAIL="sam.ban@sheerid.com"
-TALON_ONE_PASSWORD="***REMOVED***"
-TALON_ONE_BASEPATH="https://sheerid.us-east4.talon.one"
+TALON_ONE_ADMIN_EMAIL="youradmin@email"
+TALON_ONE_PASSWORD="yourpassword"
+TALON_ONE_BASEPATH="https://{your-talonone-url}.us-east4.talon.one"
 ```
 
 ```sh
