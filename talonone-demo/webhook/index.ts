@@ -4,6 +4,13 @@ import * as TalonOne from "talon_one";
 
 const app = express();
 
+interface CartItem {
+  sku: string;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 const getVerificationDetails = async (
   verificationId: string
 ) => {
@@ -50,25 +57,69 @@ app.post("/success-webhook", async (req, res, next) => {
 
   console.log('verificationDetails', verificationDetails);
 
-  const customerSession = TalonOne.NewCustomerSessionV2.constructFromObject(null,{
-    profileId: 'demo-customer-session-id',
+  const segment = verificationDetails.confirmedSegments[0].segment;
+
+  let cartItems: CartItem[] = [];
+
+  if (segment === 'student') {
+    cartItems = [
+      {
+        sku: 'demo-laptop-sku',
+        name: 'MacBook Pro',
+        price: 1200,
+        quantity: 1,
+      },
+    ];
+  } else if (segment === 'military') {
+    cartItems = [
+      {
+        sku: 'demo-pants-sku',
+        name: 'Sturdy Work Pants',
+        price: 100,
+        quantity: 1,
+      },
+    ];
+  } else if (segment === 'medical') {
+    cartItems = [
+      {
+        sku: 'demo-ticket-sku-1',
+        name: 'LHR-JFK Business Class',
+        price: 1888,
+        quantity: 1,
+      },
+      {
+        sku: 'demo-ticket-sku-2',
+        name: 'JFK-LHR Business Class',
+        price: 2288,
+        quantity: 1,
+      },
+      {
+        sku: 'demo-hotel-sku',
+        name: 'The Algonquin Hotel Times Square, Autograph Collection',
+        price: 3517,
+        quantity: 1,
+      }
+    ];
+  }
+
+  const name = verificationDetails.personInfo.firstName.toLowerCase() + '-' + verificationDetails.personInfo.lastName.toLowerCase();
+
+  const obj = {
+    profileId: 'demo-'+segment+'-'+name,
     attributes: {
       verifiedSegment: verificationDetails.confirmedSegments[0].segment,
       verifiedOrganization: verificationDetails.personInfo.organization.name,
     },
-    cartItems: [
-      {
-        sku: 'demo-product-id',
-        name: 'Demo Product',
-        price: 100,
-        quantity: 1,
-      },
-    ],
-  });
+    cartItems,
+  };
+
+  console.log('sending', obj);
+
+  const customerSession = TalonOne.NewCustomerSessionV2.constructFromObject(null, obj);
 
   const integrationRequest = new TalonOne.IntegrationRequest(customerSession);
 
-  await integrationApi.updateCustomerSessionV2("SheerID lambda", integrationRequest);
+  await integrationApi.updateCustomerSessionV2('demo-'+segment+'-'+name+'-session', integrationRequest);
 
   return res.status(200).send("OK");
 });

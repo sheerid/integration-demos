@@ -29,7 +29,11 @@ export const CreateAttributes = async () => {
     type: "string",
     description: "SheerID segment that has been verified.",
     suggestions: [
-      "string"
+      "student",
+      "military",
+      "medical",
+      "movers",
+      "employee",
     ],
     editable: false,
   });
@@ -40,9 +44,6 @@ export const CreateAttributes = async () => {
     title: "Verified Organization",
     type: "string",
     description: "Organisation Name that has been verified by SheerID.",
-    suggestions: [
-      "string"
-    ],
     editable: false,
   });
   console.log(await vOrgName);  
