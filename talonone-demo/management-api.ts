@@ -37,7 +37,7 @@ export const CreateAttributes = async () => {
     ],
     editable: false,
   });
-  console.log(await vsegment);
+  console.log(vsegment);
   const vOrgName = await api.createAttribute({
     entity: "CustomerSession",
     name: "verifiedOrganization",
@@ -46,5 +46,5 @@ export const CreateAttributes = async () => {
     description: "Organisation Name that has been verified by SheerID.",
     editable: false,
   });
-  console.log(await vOrgName);  
+  console.log(vOrgName);
 };
