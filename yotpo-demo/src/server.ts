@@ -24,7 +24,7 @@ app.post<{}, string, WebhookBody, {}>('/success-webhook', async (request, respon
                 tags: "verified_" + segment,
                 customer_id: metadata.customer_id || undefined,
             });
-            console.log(`upserting user ${email} with confirmed segments`);
+            console.log(`upserting customer ${email} with confirmed segments`);
         } else {
             console.log('no post body');
         }
