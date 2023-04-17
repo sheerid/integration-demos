@@ -21,7 +21,7 @@ It is a simple webhook handler that will receive a webhook from SheerID on a suc
 
 ## Setup
 
-1. Clone this repo
+1. Clone this repo, make sure you have a recent version of node installed
 2. Run `npm install`
 3. Create a `.env` file in the root of the project with the following contents:
 
