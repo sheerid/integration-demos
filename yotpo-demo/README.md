@@ -1,6 +1,6 @@
 # Yotpo Integration demo
 
-This is a demo of the Yotpo integration SheerID. 
+This is a demo of a Yotpo integration with SheerID. 
 
 It is a simple webhook handler that will receive a webhook from SheerID on a successful verification, ask back for verification details and then send the verification details to Yotpo.
 
