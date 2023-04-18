@@ -1,4 +1,3 @@
-
 import { CreateAttributes } from "./management-api";
 
 CreateAttributes().then(() => {
