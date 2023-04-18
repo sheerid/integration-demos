@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 
-fetch(process.env.YOTPO_API_URL+'customers/recent?per_page=100',{
+fetch(`${process.env.YOTPO_API_URL}customers/recent?per_page=100`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
