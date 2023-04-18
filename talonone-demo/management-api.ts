@@ -14,12 +14,11 @@ export const CreateAttributes = async () => {
   console.log('authBody', authBody);
 
   const res = await api.createSession(authBody);
-  const resJson = await res;
 
-  console.log('resJson', resJson.token);
+  console.log('result', res.token);
 
   defaultClient.defaultHeaders = {
-    "Authorization": `Bearer ${resJson.token}`
+    "Authorization": `Bearer ${res.token}`
   };
 
   const vsegment = await api.createAttribute({

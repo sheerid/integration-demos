@@ -102,10 +102,10 @@ app.post("/success-webhook", async (req, res, next) => {
     ];
   }
 
-  const name = verificationDetails.personInfo.firstName.toLowerCase() + '-' + verificationDetails.personInfo.lastName.toLowerCase();
+  const name = `${verificationDetails.personInfo.firstName.toLowerCase()}-${verificationDetails.personInfo.lastName.toLowerCase()}`;
 
   const obj = {
-    profileId: 'demo-'+segment+'-'+name,
+    profileId: `demo-${segment}-${name}`,
     attributes: {
       verifiedSegment: verificationDetails.confirmedSegments[0].segment,
       verifiedOrganization: verificationDetails.personInfo.organization.name,
