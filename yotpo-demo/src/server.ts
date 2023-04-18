@@ -21,7 +21,7 @@ app.post<{}, string, WebhookBody, {}>('/success-webhook', async (request, respon
                 last_name: verificationDetails.personInfo.lastName,
                 email: email,
                 opted_in: true,
-                tags: "verified_" + segment,
+                tags: `verified_${segment}`,
                 customer_id: metadata.customer_id || undefined,
             });
             console.log(`upserting customer ${email} with confirmed segments`);
