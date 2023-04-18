@@ -2,7 +2,7 @@ import { YotpoCustomer } from './types';
 import config from './config';
 
 const upsertCustomer = async (customerData: YotpoCustomer) => 
-  fetch(config.YOTPO_API_URL+'customers', {
+  fetch(`${config.YOTPO_API_URL}customers`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
