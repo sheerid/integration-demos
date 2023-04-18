@@ -65,7 +65,7 @@ export const getVerificationDetails = async (
         'headers': {
             'Authorization': `Bearer ${config.SHEERID_TOKEN}`,
             'Content-Type': 'application/json',
-            'User-Agent': 'SheerID Salesforce '+ packageJson.version,
+            'User-Agent': `SheerID Salesforce ${packageJson.version}`,
         },
     });
     return res.json() as Promise<VerificationDetails>;
